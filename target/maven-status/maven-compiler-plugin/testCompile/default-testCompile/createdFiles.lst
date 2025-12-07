@@ -1,0 +1,10 @@
+pages\ProductsPage.class
+steps\CheckoutSteps.class
+pages\CheckoutCompletePage.class
+pages\CheckoutStepOnePage.class
+pages\LoginPage.class
+utils\BaseTest.class
+pages\CartPage.class
+runners\RunCucumberTest.class
+pages\CheckoutOverviewPage.class
+utils\FluentWaitUtils.class
