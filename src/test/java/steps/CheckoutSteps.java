@@ -38,16 +38,20 @@ public class CheckoutSteps extends BaseTest {
     public void i_verify_cart(){
         products.openCart();
         cart = new CartPage(driver);
-
         assertEquals(2, cart.getItemCount());
-
-    }
-    @When("I checkout")
-    public void i_checkout(){
-        products.openCart();
-        cart = new CartPage(driver);
-
         cart.clickCheckout();
+    }
+
+    @And("Je renseigne mes informations")
+    public void i_fill_in_my_info(){
+        stepOne = new CheckoutStepOnePage(driver);
+
+        stepOne.fillForm("Ghassen", "Azouz","75016");
+    }
+
+    @When("Je valide le panier")
+    public void i_checkout(){
+        overview = new CheckoutOverviewPage(driver);
 
         double item = overview.getItemTotal();
         double tax = overview.getTax();
@@ -58,11 +62,8 @@ public class CheckoutSteps extends BaseTest {
         overview.clickFinish();
     }
 
-    @And("")
-    public void I_(){
 
-    }
-    @Then("I see confirmation")
+    @Then("Le message de confirmation est affiché")
     public void i_see_confirmation(){
         complete = new CheckoutCompletePage(driver);
         assertEquals("Thank you for your order!", complete.getConfirmationMessage());
